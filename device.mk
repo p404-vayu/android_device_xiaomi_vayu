@@ -380,6 +380,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom/media \
     vendor/qcom/opensource/audio-hal/primary-hal
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # NeuralNetworks
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
