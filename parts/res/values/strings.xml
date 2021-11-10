@@ -15,6 +15,9 @@
      limitations under the License.
 -->
 <resources>
+    <!-- App Name -->
+    <string name="deviceparts_label" translatable="false">Device Parts</string>
+
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
 

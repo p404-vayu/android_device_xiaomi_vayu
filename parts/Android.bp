@@ -5,13 +5,13 @@
 //
 
 android_app {
-    name: "XiaomiParts",
+    name: "DeviceParts",
     defaults: [
         "SettingsLibDefaults",
     ],
 
     srcs: ["src/**/*.java"],
-    init_rc: ["xiaomiparts.rc"],
+    init_rc: ["deviceparts.rc"],
     resource_dirs: ["res"],
     certificate: "platform",
     platform_apis: true,

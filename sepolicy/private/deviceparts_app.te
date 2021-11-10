@@ -1,0 +1,36 @@
+app_domain(deviceparts_app)
+typeattribute deviceparts_app mlstrustedsubject;
+
+# Allow deviceparts_app to find *_service
+allow deviceparts_app {
+  app_api_service
+  audioserver_service
+  cameraserver_service
+  drmserver_service
+  mediaextractor_service
+  mediametrics_service
+  mediaserver_service
+}:service_manager find;
+
+# Allow deviceparts_app read and write /data/data subdirectory
+allow deviceparts_app system_app_data_file:dir create_dir_perms;
+allow deviceparts_app system_app_data_file:{ file lnk_file } create_file_perms;
+
+# Allow binder communication with gpuservice
+binder_call(deviceparts_app, gpuservice)
+
+# Allow deviceparts_app to read and write to cgroup/sysfs_leds/sysfs_thermal
+allow deviceparts_app sysfs_leds:dir search;
+#allow deviceparts_app vendor_sysfs_graphics:dir search;
+allow deviceparts_app {
+  cgroup
+  sysfs_leds
+  sysfs_thermal
+}:{ file lnk_file } rw_file_perms;
+
+# Allow xiaomi_settings to read and write to sysfs_vibrator
+allow deviceparts_app sysfs_vibrator:dir search;
+allow deviceparts_app sysfs_vibrator:file rw_file_perms;
+
+get_prop(deviceparts_app, deviceparts_prop)
+set_prop(deviceparts_app, deviceparts_prop)
