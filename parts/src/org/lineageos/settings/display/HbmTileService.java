@@ -16,6 +16,11 @@
 
 package org.lineageos.settings.display;
 
+import static org.lineageos.settings.display.LcdFeaturesPreferenceFragment.HBM_MODE_OFF;
+import static org.lineageos.settings.display.LcdFeaturesPreferenceFragment.HBM_MODE_ON;
+import static org.lineageos.settings.display.LcdFeaturesPreferenceFragment.HBM_NODE;
+import static org.lineageos.settings.display.LcdFeaturesPreferenceFragment.HBM_PROP;
+
 import android.content.Context;
 import android.os.SystemProperties;
 import android.service.quicksettings.Tile;
@@ -29,26 +34,25 @@ public class HbmTileService extends TileService {
     private Context context;
     private Tile tile;
 
-    private String[] HbmModes;
-    private String[] HbmValues;
     private int currentHbmMode;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        HbmModes = context.getResources().getStringArray(R.array.lcd_hbm_modes);
-        HbmValues = context.getResources().getStringArray(R.array.lcd_hbm_values);
     }
 
     private void updateCurrentHbmMode() {
-        currentHbmMode = SystemProperties.getInt(LcdFeaturesPreferenceFragment.HBM_PROP, 0);
+        currentHbmMode = SystemProperties.getInt(HBM_PROP, HBM_MODE_OFF);
     }
 
     private void updateHbmTile() {
-        tile.setState(currentHbmMode > 0 ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-        tile.setContentDescription(HbmModes[currentHbmMode]);
-        tile.setSubtitle(HbmModes[currentHbmMode]);
+        String enabled = context.getResources().getString(R.string.enabled);
+        String disabled = context.getResources().getString(R.string.disabled);
+
+        tile.setState(currentHbmMode != 0 ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
+        tile.setContentDescription(currentHbmMode != 0 ? enabled : disabled);
+        tile.setSubtitle(currentHbmMode != 0 ?  enabled : disabled);
         tile.updateTile();
     }
 
@@ -56,7 +60,7 @@ public class HbmTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         tile = getQsTile();
-        if (!FileUtils.fileExists(LcdFeaturesPreferenceFragment.HBM_NODE)) {
+        if (!FileUtils.fileExists(HBM_NODE)) {
             tile.setState(Tile.STATE_UNAVAILABLE);
             tile.setSubtitle(getResources().getString(R.string.kernel_not_supported));
             tile.updateTile();
@@ -70,12 +74,8 @@ public class HbmTileService extends TileService {
     public void onClick() {
         super.onClick();
         updateCurrentHbmMode();
-        if (currentHbmMode == HbmModes.length - 1) {
-            currentHbmMode = 0;
-        } else {
-            currentHbmMode++;
-        }
-        SystemProperties.set(LcdFeaturesPreferenceFragment.HBM_PROP, Integer.toString(currentHbmMode));
+        currentHbmMode = currentHbmMode != HBM_MODE_ON ? HBM_MODE_ON : HBM_MODE_OFF;
+        SystemProperties.set(HBM_PROP, Integer.toString(currentHbmMode));
         updateHbmTile();
     }
 }

@@ -151,7 +151,7 @@
         <service
             android:name=".display.CabcTileService"
             android:icon="@drawable/ic_cabc"
-            android:label="@string/lcd_cabc_title"
+            android:label="@string/lcd_cabc_tile_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>

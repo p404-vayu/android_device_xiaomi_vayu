@@ -23,6 +23,7 @@ import android.os.SystemProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
+import androidx.preference.SwitchPreference;
 
 import org.lineageos.settings.R;
 import org.lineageos.settings.utils.FileUtils;
@@ -36,10 +37,13 @@ public class LcdFeaturesPreferenceFragment extends PreferenceFragment
     public static final String HBM_PROP = "persist.deviceparts.lcd.hbm";
     public static final String CABC_PROP = "persist.deviceparts.lcd.cabc";
 
-    private static final String KEY_HBM = "lcd_hbm_pref";
-    private static final String KEY_CABC = "lcd_cabc_pref";
+    private static final String KEY_HBM = "hbm_pref";
+    private static final String KEY_CABC = "cabc_pref";
 
-    private ListPreference mHbmPref;
+    public static final int HBM_MODE_OFF = 0;
+    public static final int HBM_MODE_ON = 2;
+
+    private SwitchPreference mHbmPref;
     private ListPreference mCabcPref;
 
     @Override
@@ -51,7 +55,7 @@ public class LcdFeaturesPreferenceFragment extends PreferenceFragment
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.lcd_features_settings);
-        mHbmPref = (ListPreference) findPreference(KEY_HBM);
+        mHbmPref = (SwitchPreference) findPreference(KEY_HBM);
         mHbmPref.setOnPreferenceChangeListener(this);
         mCabcPref = (ListPreference) findPreference(KEY_CABC);
         mCabcPref.setOnPreferenceChangeListener(this);
@@ -61,8 +65,7 @@ public class LcdFeaturesPreferenceFragment extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        mHbmPref.setValue(SystemProperties.get(HBM_PROP, "0"));
-        mHbmPref.setSummary(mHbmPref.getEntry());
+        mHbmPref.setChecked(SystemProperties.get(HBM_PROP, "0") != "0");
         mCabcPref.setValue(SystemProperties.get(CABC_PROP, "0"));
         mCabcPref.setSummary(mCabcPref.getEntry());
         validateKernelSupport();
@@ -73,9 +76,10 @@ public class LcdFeaturesPreferenceFragment extends PreferenceFragment
         final String key = preference.getKey();
 
         if (key.equals(KEY_HBM)) {
-            mHbmPref.setValue((String) newValue);
-            mHbmPref.setSummary(mHbmPref.getEntry());
-            SystemProperties.set(HBM_PROP, (String) newValue);
+            boolean isHbmEnabled = (Boolean) newValue;
+            mHbmPref.setChecked(isHbmEnabled);
+            SystemProperties.set(HBM_PROP,
+                String.valueOf(isHbmEnabled ? HBM_MODE_ON : HBM_MODE_OFF));
         } else if (key.equals(KEY_CABC)) {
             mCabcPref.setValue((String) newValue);
             mCabcPref.setSummary(mCabcPref.getEntry());
