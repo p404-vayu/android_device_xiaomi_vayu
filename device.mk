@@ -306,15 +306,11 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-   CarrierConfigOverlayVayu \
-   DialerOverlayVayu \
    FrameworksResOverlayVayu \
    NotchBarKillerVayu \
    SettingsOverlayVayu \
    SettingsProviderOverlayVayu \
    SystemUIOverlayVayu \
-   TelephonyOverlayVayu \
-   TetheringConfigOverlayVayu \
    WifiOverlayVayu
 
 # Power
@@ -336,6 +332,7 @@ TARGET_BOARD_PLATFORM := msmnile
 TARGET_COMMON_QTI_COMPONENTS := \
     display \
     vibrator \
+    overlay \
     perf \
     bt \
     usb \
