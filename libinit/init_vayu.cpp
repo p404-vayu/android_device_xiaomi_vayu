@@ -117,8 +117,5 @@ void vendor_load_properties() {
     }
 
     load_dalvik_properties();
-
-//  SafetyNet workaround
-    property_override("ro.boot.verifiedbootstate", "green");
 }
 
