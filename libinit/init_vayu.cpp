@@ -120,9 +120,6 @@ void vendor_load_properties() {
 
     load_dalvik_properties();
 
-//  SafetyNet workaround
-    property_override("ro.boot.verifiedbootstate", "green");
-
 #ifdef __ANDROID_RECOVERY__
     std::string buildtype = GetProperty("ro.build.type", "userdebug");
     if (buildtype != "user") {
