@@ -122,8 +122,6 @@ void vendor_load_properties() {
 
 //  SafetyNet workaround
     property_override("ro.boot.verifiedbootstate", "green");
-//  Enable transitional log for Privileged permissions
-    property_override("ro.control_privapp_permissions", "log");
 
 #ifdef __ANDROID_RECOVERY__
     std::string buildtype = GetProperty("ro.build.type", "userdebug");
