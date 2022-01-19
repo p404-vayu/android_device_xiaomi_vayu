@@ -549,13 +549,6 @@ service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service vendor.sensingdaemon /vendor/bin/sensingdaemon
-    class hal
-    socket wigig/sensingdaemon stream 660 system wifi
-    user system
-    group wifi
-    disabled
-
 service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
     class main
     user wifi
