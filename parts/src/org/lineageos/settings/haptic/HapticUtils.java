@@ -30,7 +30,7 @@ import org.lineageos.settings.utils.FileUtils;
 public final class HapticUtils {
 
     final static String PREF_LEVEL = "haptic_level_pref";
-    final static String PATH_LEVEL = "/sys/module/qti_haptics/parameters/level";
+    final static String PATH_LEVEL = "/sys/module/qti_haptics/parameters/vmax_mv_override";
 
     final static int MIN_LEVEL = 1;
     final static int MAX_LEVEL = 3596;
