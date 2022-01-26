@@ -43,6 +43,9 @@ TARGET_OTA_ASSERT_DEVICE := vayu,bhima
 TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
+
 # Display
 TARGET_SCREEN_DENSITY := 410 ## smallest width 421dp
 
