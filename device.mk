@@ -169,6 +169,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
+# Dalvik
+PRODUCT_VENDOR_PROPERTIES += \
+    dalvik.vm.systemuicompilerfilter=speed
+
 # Display
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml \
