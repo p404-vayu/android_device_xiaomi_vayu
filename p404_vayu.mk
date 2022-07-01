@@ -11,10 +11,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
 
-# Inherit common ArrowOS configurations
-$(call inherit-product, vendor/arrow/config/common.mk)
+# Inherit common p404 configurations
+$(call inherit-product, vendor/404/configs/common.mk)
 
-PRODUCT_NAME := arrow_vayu
+PRODUCT_NAME := p404_vayu
 PRODUCT_DEVICE := vayu
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := Poco X3 Pro
@@ -29,7 +29,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 BUILD_FINGERPRINT := Xiaomi/vayu_global/vayu:12/RKQ1.200826.002/V13.0.3.0.SJUMIXM:user/release-keys
 
-# ArrowOS additions
-DEVICE_MAINTAINER := kubersharma001
-$(call inherit-product-if-exists, vendor/lawnchair/lawnchair.mk)
-
+# P404 stuffs
+P404_BUILDTYPE := SHINKA

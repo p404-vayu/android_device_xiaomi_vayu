@@ -393,6 +393,8 @@ PRODUCT_COPY_FILES += \
 # Properties
 include $(LOCAL_PATH)/properties/default.mk
 
+TARGET_BOARD_PLATFORM := msmnile
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.6.vendor \
@@ -431,7 +433,10 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/xiaomi
+    hardware/xiaomi \
+    hardware/qcom/display \
+    hardware/qcom/media \
+    vendor/qcom/opensource/audio-hal/primary-hal
 
 # NeuralNetworks
 PRODUCT_PACKAGES += \
