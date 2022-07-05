@@ -222,6 +222,9 @@ PRODUCT_COPY_FILES += \
 
 # Init scripts
 PRODUCT_PACKAGES += \
+    init.qti.dcvs.sh
+
+PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc
 
