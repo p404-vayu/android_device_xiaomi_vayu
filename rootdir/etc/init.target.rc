@@ -188,6 +188,9 @@ on boot
     chown system system /dev/ir_spi
     chmod 0660 /dev/ir_spi
 
+    # USB controller configuration
+    setprop sys.usb.configfs 1
+
 on boot && property:persist.vendor.usb.controller.default=*
     setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
 
@@ -214,6 +217,9 @@ service vendor.per_proxy /vendor/bin/pm-proxy
     disabled
 
 on charger
+    setprop vendor.usb.controller a600000.dwc3
+    setprop sys.usb.configfs 1
+    
     mkdir /mnt/vendor/persist
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
