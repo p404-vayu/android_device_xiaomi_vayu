@@ -50,9 +50,6 @@ TARGET_DISABLED_UBWC := true
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
-
 # FM
 BOARD_HAVE_QCOM_FM := true
 
@@ -121,7 +118,6 @@ BOARD_USES_METADATA_PARTITION := true
 # Power
 TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
 TARGET_USES_INTERACTION_BOOST := true
-TARGET_POWERHAL_BOOST_EXT := $(DEVICE_PATH)/power/boost-ext.cpp
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile

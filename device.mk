@@ -87,9 +87,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
-
 # Camera
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0.vendor \
@@ -158,13 +155,6 @@ PRODUCT_PACKAGES += \
     FM2 \
     qcom.fmradio
 
-# Framework detect
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor \
-    libvndfwk_detect_jni.qti \
-    libvndfwk_detect_jni.qti.vendor
-
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
@@ -173,12 +163,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl-qti \
     android.hardware.health@2.1-service
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0.vendor \
-    libhwbinder.vendor
 
 # HotwordEnrollement
 PRODUCT_COPY_FILES += \
@@ -290,8 +274,10 @@ PRODUCT_COPY_FILES += \
 # Properties
 include $(LOCAL_PATH)/properties/default.mk
 
+# Platform
 TARGET_BOARD_PLATFORM := msmnile
 
+# QTI
 TARGET_COMMON_QTI_COMPONENTS := \
     display \
     adreno \
