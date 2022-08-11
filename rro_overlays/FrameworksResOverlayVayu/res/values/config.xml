@@ -637,5 +637,6 @@
         <item>"com.google.android.apps.youtube.music"</item>
         <item>"com.vanced.android.youtube"</item>
         <item>"com.vanced.android.apps.youtube.music"</item>
+        <item>"app.revanced.android.youtube"</item>
     </string-array>
 </resources>
