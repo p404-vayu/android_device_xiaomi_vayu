@@ -106,7 +106,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libMegviiFacepp-0.5.2 \
-    libmegface
+    libmegface_xiaomi
 
 PRODUCT_PACKAGES += \
    libstdc++.vendor
