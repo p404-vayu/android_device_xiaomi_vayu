@@ -81,13 +81,13 @@ public class FPSInfoService extends Service {
         FPSView(Context c) {
             super(c);
             float density = c.getResources().getDisplayMetrics().density;
-            int paddingPx = Math.round(5 * density);
+            int paddingPx = Math.round(7 * density);
             setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
             setBackgroundColor(Color.argb(0x60, 0, 0, 0));
 
-            final int textSize = Math.round(12 * density);
+            final int textSize = Math.round(14 * density);
 
-            Typeface typeface = Typeface.create("monospace", Typeface.NORMAL);
+            Typeface typeface = Typeface.create("GoogleSans", Typeface.NORMAL);
 
             mOnlinePaint = new Paint();
             mOnlinePaint.setTypeface(typeface);
