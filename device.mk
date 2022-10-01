@@ -231,6 +231,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor
 
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2.vendor \
+    NfcNci
+
+TARGET_NFC_SKU := vayu
+
 # Overlays
 PRODUCT_PACKAGES += \
    FrameworksResOverlayVayu \
