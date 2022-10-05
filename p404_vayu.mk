@@ -30,8 +30,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := Xiaomi/vayu_global/vayu:12/RKQ1.200826.002/V13.0.3.0.SJUMIXM:user/release-keys
 
 # P404 stuffs
-TARGET_SHIP_WITH_MATLOG := true
-
 ifeq ($(WITH_GAPPS),true)
 P404_BUILDTYPE := Tokui-GAPPS
 else
