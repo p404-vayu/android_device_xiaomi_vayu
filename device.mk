@@ -85,6 +85,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
+    libbthost_if \
+    libtinycompress \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
@@ -425,7 +427,8 @@ TARGET_BOARD_PLATFORM := msmnile
 # Qti
 TARGET_COMMON_QTI_COMPONENTS := \
     perf \
-    usb
+    usb \
+    bt
 
 # Net
 PRODUCT_PACKAGES += \
