@@ -422,6 +422,9 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi
 
+# Platform
+TARGET_BOARD_PLATFORM := msmnile
+
 # Net
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
