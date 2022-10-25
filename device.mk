@@ -254,13 +254,11 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.sh \
     init.qti.dcvs.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
-    init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -393,7 +391,8 @@ TARGET_BOARD_PLATFORM := msmnile
 # QTI
 TARGET_COMMON_QTI_COMPONENTS := \
     perf \
-    bt
+    bt \
+    usb
 
 # RIL
 PRODUCT_PACKAGES += \
