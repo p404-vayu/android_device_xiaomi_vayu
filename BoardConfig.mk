@@ -45,7 +45,6 @@ TARGET_NO_BOOTLOADER := true
 
 # Display
 TARGET_SCREEN_DENSITY := 410 ## smallest width 421dp
-TARGET_USES_VULKAN := true
 
 # FM
 BOARD_HAVE_QCOM_FM := true
