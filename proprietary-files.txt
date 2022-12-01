@@ -1,4 +1,4 @@
-# All the proprietary files are extracted from miui_VAYUGlobal_V13.0.5.0.SJUMIXM_7cc0b9ac86_12.0.zip, unless pinned.
+# All the proprietary files are extracted from miui_VAYUGlobal_V13.0.8.0.SJUMIXM_d1f5478f78_12.0.zip, unless pinned.
 
 # ACDB
 vendor/etc/acdbdata/Forte/Forte_Bluetooth_cal.acdb
@@ -25,6 +25,8 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
 # ADSP modules
+vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
+vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDAD_Encoder.so
 vendor/lib/rfsa/adsp/libSuperSensor_skel.so
 vendor/lib/rfsa/adsp/libVC1Dec.so
@@ -536,6 +538,7 @@ vendor/etc/init/android.hardware.gnss@2.1-service-qti.rc
 vendor/lib/libloc_api_v02.so
 vendor/etc/cacert_location.pem
 vendor/etc/xtra_root_cert.pem
+vendor/lib64/libloc_api_v02.so
 vendor/lib64/hw/android.hardware.gnss@2.1-impl-qti.so
 vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so
 vendor/lib64/libaoa.so
@@ -1160,7 +1163,6 @@ vendor/etc/wifi/aoa_cldb_falcon.bin
 vendor/etc/wifi/aoa_cldb_swl14.bin
 
 # Wifi Display
-vendor/bin/wfdhdcphalservice
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/etc/seccomp_policy/wifidisplayhalservice.policy
