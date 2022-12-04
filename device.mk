@@ -43,6 +43,16 @@ PRODUCT_PACKAGES += \
     libreverbwrapper \
     libvisualizer
 
+PRODUCT_VENDOR_PROPERTIES += \
+    audio.offload.min.duration.secs=30 \
+    audio.offload.video=true \
+    persist.vendor.audio.hifi=false \
+    persist.vendor.audio.ring.filter.mask=0 \
+    ro.vendor.audio.soundfx.usb=true \
+    ro.af.client_heap_size_kbyte=7168 \
+    ro.config.vc_call_vol_steps=11 \
+    vendor.audio.usb.disable.sidetone=true
+
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
@@ -58,6 +68,29 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
+
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.btsatck.absvolfeature=true \
+    persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true \
+    persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=false \
+    persist.vendor.qcom.bluetooth.enable.splita2dp=true \
+    persist.vendor.qcom.bluetooth.scram.enabled=true \
+    persist.vendor.qcom.bluetooth.soc=cherokee \
+    persist.vendor.qcom.bluetooth.twsp_state.enabled=false \
+    ro.bluetooth.a2dp_offload.supported=true \
+    ro.vendor.bluetooth.wipower=false \
+    vendor.qcom.bluetooth.soc=cherokee \
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.vendor.bt.a2dp.aac_whitelist=false \
+    persist.vendor.bt.a2dp.mac_whitelist=false \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac \
+    persist.vendor.btstack.connect.peer_earbud=true \
+    persist.vendor.btstack.enable.splita2dp=true \
+    persist.vendor.btstack.enable.twsplus=true \
+    persist.vendor.btstack.enable.twsplussho=true \
+    vendor.bluetooth.soc=cherokee \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
@@ -95,9 +128,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
    libstdc++.vendor
 
+PRODUCT_SYSTEM_PROPERTIES += \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
+    persist.vendor.camera.facepp.fdenable=0 \
+    camera.disable_zsl_mode=1
+
 # Charger
 PRODUCT_PACKAGES += \
     libsuspend
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.charger.enable_suspend=true
 
 # Config Store
 PRODUCT_PACKAGES += \
@@ -111,18 +152,45 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
+# Crypto
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.volume.filenames_mode="aes-256-cts" \
+    ro.crypto.dm_default_key.options_format.version=2 \
+    ro.crypto.volume.metadata.method=dm-default-key
+
 # Device Parts
 PRODUCT_PACKAGES += \
     DeviceParts
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.deviceparts.lcd.cabc=1
+
+# Display
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_42_02_0b_video_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_42_02_0b_video_mode_dsc_dsi_panel.xml
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    debug.sf.frame_rate_multiple_threshold=120 \
+    ro.surface_flinger.set_display_power_timer_ms=1000 \
+    ro.surface_flinger.set_idle_timer_ms=80 \
+    ro.surface_flinger.set_touch_timer_ms=200 \
+    ro.surface_flinger.use_color_management=true \
+    ro.surface_flinger.use_content_detection_for_refresh_rate=true
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     android.hardware.drm@1.3.vendor
+
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.dpm.feature=1 \
+    persist.vendor.dpm.nsrm.bkg.evt=3955 \
+    persist.vendor.dpmhalservice.enable=1
+
+# Factory Reset Protection
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -145,6 +213,9 @@ PRODUCT_PACKAGES += \
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.gatekeeper.disable_spu=true
 
 # GNSS Configs
 PRODUCT_COPY_FILES += \
@@ -222,6 +293,10 @@ $(call inherit-product-if-exists, vendor/xiaomi/miuicam/miuicam-vendor.mk)
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor
 
+# Netflix custom property
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.netflix.bsp_rev=Q855-16947-1
+
 # Overlays
 PRODUCT_PACKAGES += \
    FrameworksResOverlayVayu \
@@ -274,6 +349,22 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.radio.data_ltd_sys_ind=1 \
+    persist.vendor.radio.dynamic_sar=1 \
+    persist.vendor.radio.force_ltd_sys_ind=1 \
+    persist.vendor.radio.force_on_dc=true \
+    persist.vendor.radio.manual_nw_rej_ct=1 \
+    persist.vendor.radio.redir_party_num=1 \
+    persist.vendor.radio.report_codec=1
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.radio.dynamic_sar=false \
+    persist.radio.NO_STAPA=1 \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    ro.telephony.default_cdma_sub=0 \
+    ro.telephony.default_network=22,22
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
@@ -289,6 +380,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml
+
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.sensors.allow_non_default_discovery=true
+
+# SoC
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.soc.manufacturer=Qualcomm \
+    ro.soc.model=SM8150
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -347,8 +446,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.data.iwlan.enable=true \
+    ro.telephony.iwlan_operation_mode=legacy
+
 # WiFi Display
 PRODUCT_PACKAGES += \
     libwfdaac_vendor
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    debug.sf.enable_hwc_vds=1 \
+    debug.sf.latch_unsignaled=1 \
+    media.wfd.max_resolution=8 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 \
 
 include vendor/xiaomi/vayu/vayu-vendor.mk
