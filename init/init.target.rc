@@ -69,6 +69,13 @@ on init && property:ro.boot.hwc=GLOBAL
 on property:ro.boot.product.hardware.sku=vayu
     enable vendor.nfc_hal_service
 
+service vayu-post-boot /vendor/bin/sh /vendor/bin/init.vayu.post_boot.sh
+    class core
+    user root
+    group root system wakelock graphics
+    disabled
+    oneshot
+
 on early-fs
     start vold
 
@@ -202,6 +209,9 @@ on property:sys.boot_completed=1
     # Restrict permissions to socket file
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
+
+    # Start custom post_boot script
+    start vayu-post-boot
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
