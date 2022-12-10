@@ -102,4 +102,6 @@
     <!-- Refresh Rate tile -->
     <string name="refresh_rate_tile_title">Refresh Rate</string>
 
+    <!-- Xiaomi Parts Label -->
+    <string name="xiaomiparts_label">Xiaomi Parts</string>
 </resources>
