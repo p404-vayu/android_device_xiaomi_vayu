@@ -33,15 +33,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
-    android.hardware.soundtrigger@2.2-impl \
-    libaudiopreprocessing \
-    libbundlewrapper \
-    libdownmix \
-    libdynproc \
-    libeffectproxy \
-    libldnhncr \
-    libreverbwrapper \
-    libvisualizer
+    android.hardware.soundtrigger@2.2-impl
 
 PRODUCT_VENDOR_PROPERTIES += \
     audio.offload.min.duration.secs=30 \
@@ -54,7 +46,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.config.vc_call_vol_steps=11 \
     vendor.audio.usb.disable.sidetone=true \
 
-
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
@@ -63,12 +54,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.audio@2.0-impl \
-    audio.bluetooth.default \
-    libbthost_if \
-    libtinycompress
-
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.btsatck.absvolfeature=true \
     persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true \
@@ -91,9 +76,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.btstack.enable.twsplus=true \
     persist.vendor.btstack.enable.twsplussho=true \
     vendor.bluetooth.soc=cherokee \
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # Camera
 PRODUCT_PACKAGES += \
