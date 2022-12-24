@@ -150,13 +150,20 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_36_02_0a_video_mode_dsc_dsi_panel.xml \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_42_02_0b_video_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_42_02_0b_video_mode_dsc_dsi_panel.xml
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    debug.sf.frame_rate_multiple_threshold=120 \
+PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.disable_backpressure=1 \
+    debug.sf.enable_hwc_vds=1 \
+    persist.sys.sf.native_mode=0 \
+    ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.msmnile.api30 \
+    ro.surface_flinger.use_content_detection_for_refresh_rate=true \
     ro.surface_flinger.set_display_power_timer_ms=1000 \
     ro.surface_flinger.set_idle_timer_ms=80 \
     ro.surface_flinger.set_touch_timer_ms=200 \
-    ro.surface_flinger.use_color_management=true \
-    ro.surface_flinger.use_content_detection_for_refresh_rate=true
+    ro.vendor.display.sensortype=2 \
+    vendor.display.disable_idle_time_hdr=1 \
+    vendor.display.disable_idle_time_video=1 \
+    vendor.display.idle_time=0 \
+    vendor.display.idle_time_inactive=0
 
 # DRM
 PRODUCT_PACKAGES += \
