@@ -35,16 +35,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.2-impl
 
-PRODUCT_VENDOR_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.min.duration.secs=30 \
     audio.offload.video=true \
     persist.vendor.audio.hifi=false \
-    ro.vendor.audio.sdk.fluencetype=fluence \
     persist.vendor.audio.ring.filter.mask=0 \
     ro.vendor.audio.soundfx.usb=true \
     ro.af.client_heap_size_kbyte=7168 \
     ro.config.vc_call_vol_steps=11 \
     vendor.audio.usb.disable.sidetone=true \
+
+PRODUCT_PRODUCT_PROPERTY += \
+    ro.vendor.audio.sdk.fluencetype=fluence
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
