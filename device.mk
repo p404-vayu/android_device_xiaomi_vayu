@@ -235,9 +235,8 @@ PRODUCT_PACKAGES += \
    libstdc++.vendor
 
 PRODUCT_SYSTEM_PROPERTIES += \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
-    persist.vendor.camera.facepp.fdenable=0 \
-    camera.disable_zsl_mode=1
+    ro.miui.notch=1 \
+    ro.product.mod_device=vayu
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -436,7 +435,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.audio.soundtrigger.xatx.vop.level.medium=10 \
 
 # Miui Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicam/miuicam-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
 
 # Network
 PRODUCT_PACKAGES += \
