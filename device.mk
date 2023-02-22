@@ -213,7 +213,7 @@ PRODUCT_PACKAGES += \
     android.hardware.light-service.xiaomi
 
 # Miui Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicam/miuicam-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
 
 # Network
 PRODUCT_PACKAGES += \
