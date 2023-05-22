@@ -365,21 +365,14 @@ PRODUCT_COPY_FILES += \
 
 # Init scripts
 PRODUCT_PACKAGES += \
-    init.mi.usb.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
     init.qti.dcvs.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.qcom.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+    init.target.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.default
+    $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.default
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -475,6 +468,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
     display \
     gps \
     vibrator \
+    init \
     overlay \
     perf \
     bt \
