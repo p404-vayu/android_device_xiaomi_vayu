@@ -18,7 +18,7 @@ ro.bluetooth.library_name=libbluetooth_qti.so
 # Camera
 camera.disable_zsl_mode=true
 persist.vendor.camera.facepp.fdenable=0
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,org.lineageos.snap,com.android.camera2
+vendor.camera.aux.packagelist=org.lineageos.aperture.dev,org.lineageos.aperture,com.android.camera2
 ro.miui.notch=1
 ro.product.mod_device=vayu
 persist.vendor.camera.privapp.list=com.android.camera

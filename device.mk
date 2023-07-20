@@ -266,7 +266,8 @@ PRODUCT_PACKAGES += \
    SettingsOverlayVayu \
    SettingsProviderOverlayVayu \
    SystemUIOverlayVayu \
-   WifiOverlayVayu
+   WifiOverlayVayu \
+   ApertureOverlayVayu
 
 # Power
 PRODUCT_PACKAGES += \
